@@ -1,0 +1,10 @@
+<input [value]="texto"
+  (input)="texto=$event.target.value">
+  {{texto}}
+
+
+<br>
+
+<app-data-binding-child-example [message]="nombre" (sendMessage)="sendMessage($event)"></app-data-binding-child-example>
+{{messageFromChild}}
+  

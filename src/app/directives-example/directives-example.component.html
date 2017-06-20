@@ -1,0 +1,36 @@
+<div *ngIf="show; then si else no">
+</div>
+  
+<ng-template #si>
+  <p>
+  es true
+  </p>
+</ng-template>
+
+<ng-template #no>
+  <p>
+  es false
+  </p>
+</ng-template>
+
+
+<ul>
+
+<li *ngFor="let item of colors; let i = index; let l=last; let o=odd; let e=even;" [style.color]="item" [ngClass]="{par:e,impar:o,ultimo:l}">
+
+<div [ngSwitch]="color">
+  <p *ngSwitchCase="'red'">Soy rojo</p>
+  <p *ngSwitchDefaul> No soy rojo</p>
+</div>
+
+   {{item|decorator: '**'}}  
+</li>
+
+
+
+<!--div [ngSwitch]="color">
+  <p *ngSwitchCase="'red'">Soy rojo</p>
+  <p *ngSwitchDefaul> No soy rojo</p>
+</div-->
+
+</ul>
