@@ -1,0 +1,28 @@
+<p>
+  login works!
+</p>
+
+<form [formGroup]="form">
+  username: <input type="text" formControlName="name" />
+  <br>
+  password: <input type="password" formControlName="pass" />
+
+<button [disabled]="!form.valid" (click)="login()">Login</button>
+</form>
+  
+<div *ngIf="form.get('name').dirty && !form.get('name').valid">
+
+  <p *ngIf="form.get('name').hasError('minlength')">
+    El nombre debe tener al menos 4 caracteres
+  </p>
+
+  <p *ngIf="form.get('name').hasError('startWithNumber')">
+    El nombre no puede empezar con numero
+  </p>
+
+  <p *ngIf="form.get('name').hasError('userTaken')">
+    El nombre ya existe
+  </p>
+
+
+</div>

@@ -1,3 +1,4 @@
+import { LoginModule } from './login/login.module';
 import { ConfirmService } from './confirm-service.service';
 import { AuthService } from './auth-service.service';
 import { LanguageService } from './language-service.service';
@@ -34,7 +35,8 @@ export function getLanguage(languageService: LanguageService){
     TutorialDetailComponentComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    LoginModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
