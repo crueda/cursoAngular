@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { LanguageServiceService } from './language-service.service';
+import { LanguageService } from './language-service.service';
 
-describe('LanguageServiceService', () => {
+describe('LanguageService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LanguageServiceService]
+      providers: [LanguageService]
     });
   });
 
-  it('should be created', inject([LanguageServiceService], (service: LanguageServiceService) => {
+  it('should be created', inject([LanguageService], (service: LanguageService) => {
     expect(service).toBeTruthy();
   }));
 });

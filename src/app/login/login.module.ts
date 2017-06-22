@@ -1,3 +1,4 @@
+import { RolService } from './rol.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -25,7 +26,7 @@ const config = {
   ],
   declarations: [LoginComponent, HasAccessDirective],
   exports: [HasAccessDirective],
-  providers: [{provide: 'config', useValue: config}, CookieService]
+  providers: [{provide: 'config', useValue: config}, CookieService, RolService]
 
 })
 export class LoginModule { }

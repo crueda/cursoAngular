@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ConfirmServiceService } from './confirm-service.service';
+import { ConfirmService } from './confirm-service.service';
 
-describe('ConfirmServiceService', () => {
+describe('ConfirmService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConfirmServiceService]
+      providers: [ConfirmService]
     });
   });
 
-  it('should be created', inject([ConfirmServiceService], (service: ConfirmServiceService) => {
+  it('should be created', inject([ConfirmService], (service: ConfirmService) => {
     expect(service).toBeTruthy();
   }));
 });

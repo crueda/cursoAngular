@@ -45,7 +45,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       token => {
         this.token = token;
         this.sub_rol = this.rolService.getRol().subscribe(
-          role => this.rol = role
+          role => {
+            console.log('rol despues del login: ' + role);
+            this.rol = role
+          }
         );
       }
     )
