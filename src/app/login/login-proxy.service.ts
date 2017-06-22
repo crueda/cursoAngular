@@ -16,7 +16,10 @@ export class LoginProxyService {
     header.set('Content-Type', 'application/x-www-form-urlencoded')
     const opts: RequestOptions = new RequestOptions()
     opts.headers = header
-    return this.http.post(this.config.api_login, body, opts)
+    let url = this.config.api_login;
+    url = 'http://localhost:3033/login';
+    console.log(url);
+    return this.http.post(url, body, opts)
 
     //otra opcion
     //return this.http.post(`${enviroments.api}/login`, body, opts)

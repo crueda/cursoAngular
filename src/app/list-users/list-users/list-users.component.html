@@ -1,3 +1,9 @@
+<button (click)="getUsers()">Leer usuarios</button>
+
 <p>
-  list-users works!
+  Los usuarios son: {{users}}
 </p>
+
+<li *ngFor="let user of users | async">
+  {{user.login}}
+</li>

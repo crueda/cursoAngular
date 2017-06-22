@@ -1,4 +1,5 @@
 import { LoginModule } from './login/login.module';
+import { ListUsersModule } from './list-users/list-users.module';
 import { ConfirmService } from './confirm-service.service';
 import { AuthService } from './auth-service.service';
 import { LanguageService } from './language-service.service';
@@ -37,6 +38,7 @@ export function getLanguage(languageService: LanguageService){
   imports: [
     BrowserModule,
     LoginModule,
+    ListUsersModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [

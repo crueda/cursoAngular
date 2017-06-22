@@ -10,10 +10,12 @@
 {{232 | currency:'EUR':true:'1.2-2'}}
 
 <nav>
-<a appHasAccess [rolPermitido]="1" routerLink='/directives'>Directives</a>
-<!--a- routerLink='/directives'>Directives</a-->
+<!--a appHasAccess [rolPermitido]="1" routerLink='/directives'>Directives</a-->
+<a routerLink='/directives'>Directives</a>
 <a routerLink='/databinding'>databinding</a>
 <a routerLink='/detail'>detail</a>
+<a routerLink='/login'>login</a>
+<a routerLink='/users'>Usuarios</a>
 </nav>
 
 <router-outlet></router-outlet>

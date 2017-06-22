@@ -9,7 +9,6 @@ import {JwtHelper} from 'angular2-jwt';
 @Injectable()
 export class ListUsersService {
 
-  users: string;
 
   constructor(
               private listUsersProxy: ListUsersProxyService
