@@ -1,28 +1,37 @@
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 import { FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { CommonValidator } from './common.validator'
 import { LoginService } from './../login.service';
 import { LoginProxyService } from './../login-proxy.service';
 import { UserService } from './../user.service';
 import { UserProxyService } from './../user-proxy.service';
+import { RolService } from './../rol.service';
 import 'rxjs/add/operator/map';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService, LoginProxyService, UserService, UserProxyService]
+  providers: [LoginService, LoginProxyService, UserService, UserProxyService, RolService]
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   token: string;
   users: string;
+  sub: Subscription
+  sub_rol: Subscription
+  sub_users: Subscription
+  rol: number
 
-  constructor(@Inject(LoginService) private loginService: LoginService, @Inject(UserService) private userService: UserService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(@Inject(LoginService) private loginService: LoginService, 
+              private rolService: RolService, 
+              @Inject(UserService) private userService: UserService) { }
 
 
   login() {
@@ -32,16 +41,33 @@ export class LoginComponent implements OnInit {
     const password =  this.form.get('pass').value;
 
     // LLamar a la api de login
-    this.loginService.dologin(username, password).subscribe(
-      token => this.token = token
+    this.sub = this.loginService.dologin(username, password).subscribe(
+      token => {
+        this.token = token;
+        this.sub_rol = this.rolService.getRol().subscribe(
+          role => this.rol = role
+        );
+      }
     )
   }
 
   getUsers() {
     // LLamar a la api de los usuarios
-    this.userService.getUsers(this.token).subscribe(
-      data => this.users = data
+    this.sub_users = this.userService.getUsers(this.token).subscribe(
+      users => {
+        console.log(users);
+        this.users = users
+      }
     )
+  }
+
+  ngOnDestroy(){
+    if (this.sub) {
+      this.sub.unsubscribe();
+    };
+    if (this.sub_rol) {
+      this.sub_rol.unsubscribe();
+    };
   }
 
   ngOnInit() {

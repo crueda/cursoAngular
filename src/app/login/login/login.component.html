@@ -3,9 +3,9 @@
 </p>
 
 <form [formGroup]="form">
-  username: <input type="text" formControlName="name" />
+  username: <input type="text" value="admin" formControlName="name" />
   <br>
-  password: <input type="password" formControlName="pass" />
+  password: <input type="password" value="admin" formControlName="pass" />
 
 <button [disabled]="!form.valid" (click)="login()">Login</button>
 </form>
@@ -30,7 +30,13 @@
   El Token es: {{token}}
 </p>
 
-<br>
+<p>
+  El Rol es: {{rol}}
+</p>
+
 
 <button (click)="getUsers()">Leer usuarios</button>
-</form>
+
+<p>
+  Los usuarios son: {{users}}
+</p>

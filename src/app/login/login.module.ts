@@ -4,12 +4,15 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
+import {CookieService} from 'angular2-cookie/core';
+import { HasAccessDirective } from './has-access.directive';
 
 const ROUTES: Routes = [
  {path: 'login', component: LoginComponent}
 ];
 
-const config = {  api_login: 'http://localhost:3033/login',
+const config = {
+                api_login: 'http://localhost:3033/login',
                 api_users: 'http://localhost:3033/restricted/1/list/users'
              };
 
@@ -20,7 +23,9 @@ const config = {  api_login: 'http://localhost:3033/login',
     ReactiveFormsModule,
     RouterModule.forChild(ROUTES)
   ],
-  providers: [{provide: 'config', useValue: config}],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent, HasAccessDirective],
+  exports: [HasAccessDirective],
+  providers: [{provide: 'config', useValue: config}, CookieService]
+
 })
 export class LoginModule { }

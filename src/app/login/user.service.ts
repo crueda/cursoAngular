@@ -1,17 +1,19 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
-import { LoginProxyService } from './login-proxy.service';
+import { UserProxyService } from './user-proxy.service';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class LoginService {
+export class UserService {
 
-  constructor(private loginProxy: LoginProxyService) {}
-  getUsers(token): Observable<string> {
-    return this.loginProxy.doLogin(username, password).map(
+  constructor(private userProxy: UserProxyService) {}
+
+  getUsers(token: string): Observable<string> {
+    return this.userProxy.getUsers(token).map(
       response => {
-        return response.json().token
+        console.log (response.json())
+        return response.json().data
       })
   }
 
