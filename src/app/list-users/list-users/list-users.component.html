@@ -1,9 +1,9 @@
-<button (click)="getUsers()">Leer usuarios</button>
+<button id="leer" (click)="getUsers()">Leer usuarios</button>
 
 <p>
   Los usuarios son: 
 </p>
 
-<li *ngFor="let user of users">
+<li class="items" *ngFor="let user of users">
   {{user.login}}
 </li>

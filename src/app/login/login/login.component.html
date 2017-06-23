@@ -3,11 +3,11 @@
 </p>
 
 <form [formGroup]="form">
-  username: <input type="text" value="admin" formControlName="name" />
+  username: <input id="username" type="text" value="admin" formControlName="name" />
   <br>
-  password: <input type="password" value="admin" formControlName="pass" />
+  password: <input id="password" type="password" value="admin" formControlName="pass" />
 
-<button [disabled]="!form.valid" (click)="login()">Login</button>
+<button id="login" [disabled]="!form.valid" (click)="login()">Login</button>
 </form>
   
 <div *ngIf="form.get('name').dirty && !form.get('name').valid">
