@@ -1,3 +1,5 @@
+import { ListUsersProxyServiceFake } from './../list-users/list-users-proxy.service.fake.spec';
+import { UserProxyService } from './user-proxy.service';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { UserService } from './user.service';

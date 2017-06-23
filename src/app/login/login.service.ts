@@ -12,7 +12,7 @@ import {JwtHelper} from 'angular2-jwt';
 export class LoginService {
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private cookieService: CookieService, 
+  constructor(private cookieService: CookieService,
               private loginProxy: LoginProxyService,
               private rolService: RolService
               ) {}

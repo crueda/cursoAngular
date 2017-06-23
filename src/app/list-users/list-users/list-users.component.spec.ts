@@ -22,4 +22,10 @@ describe('ListUsersComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set users', () => {
+    component.ngOnInit();
+    expect(component.users[0].login).toEqual('mojombo')
+  });
+
 });
